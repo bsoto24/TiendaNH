@@ -1,89 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:layout_width="120dp"
-        android:src="@drawable/tienda"
-        android:scaleType="centerCrop"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="160dp"
-        android:layout_height="100dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Mi Tienda"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:textColor="@color/black"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:text="Los mejores precios"
-        android:textSize="20sp"
-        android:layout_marginBottom="60dp"
-        android:layout_gravity="center"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:text="Correo"
-        android:textSize="14sp"
-        android:layout_marginStart="20dp"
-        android:textColor="@color/black"
-        android:layout_height="wrap_content"/>
-
-    <EditText
-        android:id="@+id/edtCorreo"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:paddingStart="10dp"
-        android:inputType="textEmailAddress"
-        android:background="@drawable/borde"
-        android:layout_height="50dp"/>
-    
-    <TextView
-        android:layout_width="wrap_content"
-        android:text="Contraseña"
-        android:textSize="14sp"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:textColor="@color/black"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/edtPassword"
-        android:layout_width="match_parent"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:inputType="textPassword"
-        android:paddingStart="10dp"
-        android:background="@drawable/borde"
-        android:layout_height="50dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:theme="@style/CustomTheme"
+            tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btnIngresar"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="60dp"
-        android:backgroundTint="@color/amarillo"
-        android:textColor="@color/black"
-        android:textAllCaps="false"
-        android:text="Ingresar" />
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="160dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/tienda" />
 
-</LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/app_name"
+                android:textColor="@color/black"
+                android:textSize="40sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="60dp"
+                android:text="Los mejores precios"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="Correo"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/edtCorreo"
+                style="@style/CustomInput"
+                android:inputType="textEmailAddress" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Contraseña"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/edtPassword"
+                style="@style/CustomInput"
+                android:inputType="textPassword" />
+
+            <Button
+                android:id="@+id/btnIngresar"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginEnd="20dp"
+                android:backgroundTint="@color/amarillo"
+                android:text="Ingresar"
+                android:textAllCaps="false"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+    </ScrollView>
+
 </layout>
