@@ -1,8 +1,9 @@
 package com.sunafil.mitienda
 
-import android.app.DatePickerDialog
-import android.app.TimePickerDialog
-import android.content.Intent
+import android.app.*
+import android.content.Context
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -11,6 +12,7 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
 import com.google.android.material.snackbar.Snackbar
 import com.sunafil.mitienda.databinding.ActivityMainBinding
 import java.util.*
@@ -31,13 +33,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnIngresar.setOnClickListener {
-            if (binding.edtCorreo.text.toString() == CORREO_EXITO && binding.edtPassword.text.toString() == PASSWORD_EXITO) {
-                val intent = Intent(this, HomeActivity::class.java)
-                startActivity(intent)
-            } else {
-                Snackbar.make(binding.root, "Credenciales incorrectas", Snackbar.LENGTH_SHORT)
-                    .show()
-            }
+//            if (binding.edtCorreo.text.toString() == CORREO_EXITO && binding.edtPassword.text.toString() == PASSWORD_EXITO) {
+//                val intent = Intent(this, HomeActivity::class.java)
+//                startActivity(intent)
+//            } else {
+//                Snackbar.make(binding.root, "Credenciales incorrectas", Snackbar.LENGTH_SHORT)
+//                    .show()
+//            }
+            showNotification()
         }
 
     }
@@ -104,6 +107,40 @@ class MainActivity : AppCompatActivity() {
 
         //Mostrar dialog en pantalla
         datePickerDialog.show()
+    }
+
+    fun showNotification() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+
+            val mNotificationManager =
+                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+            val mChannel = NotificationChannel(
+                "my_channel_01",
+                "my_channel",
+                NotificationManager.IMPORTANCE_DEFAULT
+            )
+            mChannel.description = "My channel 01"
+            mChannel.enableLights(true)
+            mChannel.lightColor = Color.RED
+            mChannel.enableVibration(true)
+            mChannel.vibrationPattern = longArrayOf(100, 200, 300, 400, 500, 400, 300, 200, 400)
+            mNotificationManager.createNotificationChannel(mChannel)
+
+            val mBuilder: NotificationCompat.Builder =
+                NotificationCompat.Builder(applicationContext, "my_channel_01")
+                    .setAutoCancel(true)
+                    .setDefaults(Notification.DEFAULT_ALL)
+                    .setWhen(System.currentTimeMillis())
+                    .setSmallIcon(R.mipmap.ic_launcher)
+                    .setTicker("Hearty365")
+                    .setPriority(Notification.PRIORITY_MAX) // this is deprecated in API 26 but you can still use for below 26. check below update for 26 API
+                    .setContentTitle("Default notification")
+                    .setContentText("Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
+                    .setContentInfo("Info")
+            mNotificationManager.notify(1, mBuilder.build())
+
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
