@@ -23,9 +23,11 @@ class ProductosActivity: AppCompatActivity() {
         setContentView(binding.root)
 
         val adapter: ProductosAdapter = ProductosAdapter()
-        binding.rvProductos.adapter = adapter
+        binding.rvProductos.adapter = adapter //vinculamos el recyclerview con su adapter
 
         adapter.addItems(obtenerProductos())
+        adapter.deleteLastItem()
+        adapter.addItem(Producto("Imagen 10", "Producto 10", "S/ 111.11"))
 
     }
 

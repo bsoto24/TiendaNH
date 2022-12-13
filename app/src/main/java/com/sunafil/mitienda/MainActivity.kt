@@ -1,10 +1,16 @@
 package com.sunafil.mitienda
 
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.sunafil.mitienda.databinding.ActivityMainBinding
+import java.util.Calendar
 
 
 class MainActivity : AppCompatActivity() {
@@ -20,55 +26,67 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnIngresar.setOnClickListener {
-//            Log.e("MainActivity", "Le dio click al boton")
-//
-//
-//            binding.btnIngresar.text = "Otro nombre"
-//
-//            if (binding.edtCorreo.text.toString() == CORREO_EXITO && binding.edtPassword.text.toString() == PASSWORD_EXITO) {
-//                val intent: Intent = Intent(this, HomeActivity::class.java)
-//                startActivity(intent)
-//            } else {
-//                Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show() //duracion corta
-//            }
-
-            val intent: Intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
-
+            showTimeDialog()
         }
 
     }
 
-    override fun onStart() {
-        super.onStart()
-        Log.e("MainActivity", "onStart")
+    fun showSimpleDialog() {
+        //Mostra un dialogo simple
+
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Dialogo")
+            .setMessage("Este es un dialogo simple")
+            .setPositiveButton("Aceptar", object : DialogInterface.OnClickListener {
+                override fun onClick(p0: DialogInterface?, p1: Int) {
+                    Toast.makeText(this@MainActivity, "Le dio en aceptar", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            }).setNegativeButton("Cancelar", object : DialogInterface.OnClickListener {
+                override fun onClick(p0: DialogInterface?, p1: Int) {
+                    Toast.makeText(this@MainActivity, "Le dio en cancelar", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            }).setNeutralButton("Omitir", object : DialogInterface.OnClickListener {
+                override fun onClick(p0: DialogInterface?, p1: Int) {
+                    Toast.makeText(this@MainActivity, "Le dio en Omitir", Toast.LENGTH_SHORT).show()
+                }
+            })
+            .show()
+
     }
 
-    // cuando la pantalla es visible y es interactuable
-    override fun onResume() {
-        super.onResume()
-        Log.e("MainActivity", "onResume")
+
+    fun showDateDialog() {
+        //Mostra un dialogo de seleccion de fecha calendario
+
+        val calendar = Calendar.getInstance() //obtener la fecha actual
+        val year = calendar[Calendar.YEAR] //obtengo el año
+        val month = calendar[Calendar.MONTH]
+        val day = calendar[Calendar.DAY_OF_MONTH]
+
+        val dialog = DatePickerDialog(this, { view, year, month, day ->
+            Toast.makeText(this, "Fecha: ${year}-${month+1}-${day}", Toast.LENGTH_LONG).show()
+        }, year, month, day)
+
+        dialog.show()
+
     }
 
-    override fun onPause() {
-        super.onPause()
-        Log.e("MainActivity", "onPause")
-    }
 
-    // para guardar datos
-    override fun onStop() {
-        super.onStop()
-        Log.e("MainActivity", "onStop")
-    }
+    fun showTimeDialog() {
+        //Mostra un dialogo de seleccion de hora reloj
 
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.e("MainActivity", "onDestroy")
-    }
+        val calendar = Calendar.getInstance() //obtener la fecha actual
+        val hour = calendar[Calendar.HOUR_OF_DAY] //obtengo el año
+        val minute = calendar[Calendar.MINUTE]
 
-    override fun onRestart() {
-        super.onRestart()
-        Log.e("MainActivity", "onRestart")
+        val dialog = TimePickerDialog(this, { view, hour, minute ->
+            Toast.makeText(this, "Hora: ${hour}:${minute}", Toast.LENGTH_LONG).show()
+        }, hour, minute, false)
+
+        dialog.show()
+
     }
 
 }

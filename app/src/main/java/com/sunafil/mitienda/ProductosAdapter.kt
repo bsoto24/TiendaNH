@@ -19,11 +19,23 @@ class ProductosAdapter: RecyclerView.Adapter<ProductosAdapter.ProductoVH>() {
 
     fun addItems(productos: ArrayList<Producto>){
         items.addAll(productos)
+        notifyDataSetChanged() //vuelve a repintar la lista de items
+    }
+
+    fun addItem(producto: Producto){
+        items.add(producto)
         notifyDataSetChanged()
     }
 
+    fun deleteLastItem(){
+        items.removeLast()
+        notifyDataSetChanged()
+    }
+
+    //Controlar los elementos visuales del item
     class ProductoVH(val binding: ItemProductoBinding): RecyclerView.ViewHolder(binding.root) {
 
+        //inyectar información
         fun bind(item: Producto){
             binding.tvNombre.text = item.nombre
             binding.tvPrecio.text = item.precio
