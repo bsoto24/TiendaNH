@@ -13,7 +13,7 @@ import com.sunafil.mitienda.databinding.ItemProductoBinding
  * @email bsoto@intercorp.com.pe
  * @since 12/12/22
  */
-class ProductosAdapter: RecyclerView.Adapter<ProductosAdapter.ProductoVH>() {
+class ProductosAdapter(val listener: ProductListener): RecyclerView.Adapter<ProductosAdapter.ProductoVH>() {
 
     val items: ArrayList<Producto> = arrayListOf()
 
@@ -36,9 +36,19 @@ class ProductosAdapter: RecyclerView.Adapter<ProductosAdapter.ProductoVH>() {
     class ProductoVH(val binding: ItemProductoBinding): RecyclerView.ViewHolder(binding.root) {
 
         //inyectar información
-        fun bind(item: Producto){
+        fun bind(item: Producto, listener: ProductListener){
             binding.tvNombre.text = item.nombre
             binding.tvPrecio.text = item.precio
+
+            binding.root.setOnClickListener {
+                listener.onClick(item)
+            }
+
+            binding.root.setOnLongClickListener {
+                listener.onLongClick()
+                true
+            }
+
         }
 
     }
@@ -50,12 +60,22 @@ class ProductosAdapter: RecyclerView.Adapter<ProductosAdapter.ProductoVH>() {
 
     //Cambiar la informacion del item
     override fun onBindViewHolder(holder: ProductoVH, position: Int) {
-        holder.bind(items[position])
+        holder.bind(items[position], listener)
     }
 
     //Asignar el tamaño de tu lista de items
     override fun getItemCount(): Int {
         return items.size
     }
+
+
+    interface ProductListener {
+
+        fun onClick(product: Producto)
+
+        fun onLongClick()
+
+    }
+
 
 }

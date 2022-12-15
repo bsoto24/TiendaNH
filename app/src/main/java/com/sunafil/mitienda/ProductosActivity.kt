@@ -1,6 +1,7 @@
 package com.sunafil.mitienda
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.sunafil.mitienda.databinding.ActivityProductosBinding
 
@@ -22,7 +23,17 @@ class ProductosActivity: AppCompatActivity() {
         binding = ActivityProductosBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val adapter: ProductosAdapter = ProductosAdapter()
+        val adapter: ProductosAdapter = ProductosAdapter(object : ProductosAdapter.ProductListener {
+
+            override fun onClick(product: Producto) {
+                Toast.makeText(this@ProductosActivity, "Producto: ${product.nombre}", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onLongClick() {
+                Toast.makeText(this@ProductosActivity, "Tienes que darle un click rapido", Toast.LENGTH_SHORT).show()
+            }
+
+        })
         binding.rvProductos.adapter = adapter //vinculamos el recyclerview con su adapter
 
         adapter.addItems(obtenerProductos())

@@ -26,66 +26,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnIngresar.setOnClickListener {
-            showTimeDialog()
+            showTimeDialog(this@MainActivity)
         }
-
-    }
-
-    fun showSimpleDialog() {
-        //Mostra un dialogo simple
-
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Dialogo")
-            .setMessage("Este es un dialogo simple")
-            .setPositiveButton("Aceptar", object : DialogInterface.OnClickListener {
-                override fun onClick(p0: DialogInterface?, p1: Int) {
-                    Toast.makeText(this@MainActivity, "Le dio en aceptar", Toast.LENGTH_SHORT)
-                        .show()
-                }
-            }).setNegativeButton("Cancelar", object : DialogInterface.OnClickListener {
-                override fun onClick(p0: DialogInterface?, p1: Int) {
-                    Toast.makeText(this@MainActivity, "Le dio en cancelar", Toast.LENGTH_SHORT)
-                        .show()
-                }
-            }).setNeutralButton("Omitir", object : DialogInterface.OnClickListener {
-                override fun onClick(p0: DialogInterface?, p1: Int) {
-                    Toast.makeText(this@MainActivity, "Le dio en Omitir", Toast.LENGTH_SHORT).show()
-                }
-            })
-            .show()
-
-    }
-
-
-    fun showDateDialog() {
-        //Mostra un dialogo de seleccion de fecha calendario
-
-        val calendar = Calendar.getInstance() //obtener la fecha actual
-        val year = calendar[Calendar.YEAR] //obtengo el año
-        val month = calendar[Calendar.MONTH]
-        val day = calendar[Calendar.DAY_OF_MONTH]
-
-        val dialog = DatePickerDialog(this, { view, year, month, day ->
-            Toast.makeText(this, "Fecha: ${year}-${month+1}-${day}", Toast.LENGTH_LONG).show()
-        }, year, month, day)
-
-        dialog.show()
-
-    }
-
-
-    fun showTimeDialog() {
-        //Mostra un dialogo de seleccion de hora reloj
-
-        val calendar = Calendar.getInstance() //obtener la fecha actual
-        val hour = calendar[Calendar.HOUR_OF_DAY] //obtengo el año
-        val minute = calendar[Calendar.MINUTE]
-
-        val dialog = TimePickerDialog(this, { view, hour, minute ->
-            Toast.makeText(this, "Hora: ${hour}:${minute}", Toast.LENGTH_LONG).show()
-        }, hour, minute, false)
-
-        dialog.show()
 
     }
 
