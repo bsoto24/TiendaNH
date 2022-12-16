@@ -1,7 +1,5 @@
 package com.sunafil.mitienda
 
-import android.content.ContentValues
-import android.database.Cursor
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -18,7 +16,6 @@ import com.sunafil.mitienda.databinding.ActivityProductosBinding
 class ProductosActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityProductosBinding
-    private lateinit var dbHelper: DBHelper
     private lateinit var spHelper: SPHelper
 
     var counter = 0
@@ -28,7 +25,6 @@ class ProductosActivity : AppCompatActivity() {
         binding = ActivityProductosBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        dbHelper = DBHelper(this)
         spHelper = SPHelper(this)
 
         counter = spHelper.readInt("contador_1")
@@ -55,50 +51,24 @@ class ProductosActivity : AppCompatActivity() {
         })
         binding.rvProductos.adapter = adapter //vinculamos el recyclerview con su adapter
 
-        adapter.addItems(obtenerProductos())
+        adapter.addItems(ArrayList(obtenerProductos()))
 
         binding.btnAdd.setOnClickListener {
             counter++
             spHelper.saveInt("contador_1", counter)
-            guardarProducto(Producto("", "Producto $counter", "S/$counter.00"))
-            adapter.refreshItems(obtenerProductos())
+            guardarProducto(Producto(counter, "", "Producto $counter", "S/$counter.00"))
+            adapter.refreshItems(ArrayList(obtenerProductos()))
         }
 
     }
 
 
-    fun obtenerProductos(): ArrayList<Producto> {
-        val db = dbHelper.readableDatabase
-        val lista = arrayListOf<Producto>()
-        val cursor: Cursor = db.rawQuery("SELECT * FROM ${DBHelper.TABLE_PRODUCTOS}", null)
-
-        if (cursor.moveToFirst()) {
-            do {
-                lista.add(
-                    Producto(
-                        cursor.getString(1),
-                        cursor.getString(2),
-                        cursor.getString(3)
-                    )
-                )
-            } while (cursor.moveToNext())
-        }
-
-        cursor.close()
-        return lista
+    fun obtenerProductos(): List<Producto> {
+        return AppDatabase.getDatabase(this).productoDao().getAll()
     }
 
-    fun guardarProducto(producto: Producto): Long {
-        val db = dbHelper.writableDatabase
-
-        val values = ContentValues().apply {
-            put(DBHelper.COLUM_PRODUCT_IMAGE, producto.imagen)
-            put(DBHelper.COLUM_PRODUCT_NAME, producto.nombre)
-            put(DBHelper.COLUM_PRODUCT_PRICE, producto.precio)
-        }
-
-        val newRowId = db?.insert(DBHelper.TABLE_PRODUCTOS, null, values)
-        return newRowId ?: 0
+    fun guardarProducto(producto: Producto) {
+        AppDatabase.getDatabase(this).productoDao().insert(producto)
     }
 
 
