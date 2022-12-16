@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.sunafil.mitienda.databinding.ActivityProductosBinding
-import com.sunafil.mitienda.test.SPHelper
 
 
 /**

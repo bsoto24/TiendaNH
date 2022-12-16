@@ -1,4 +1,4 @@
-package com.sunafil.mitienda.test
+package com.sunafil.mitienda
 
 import android.content.Intent
 import android.net.Uri
