@@ -22,6 +22,12 @@ class ProductosAdapter(val listener: ProductListener): RecyclerView.Adapter<Prod
         notifyDataSetChanged() //vuelve a repintar la lista de items
     }
 
+    fun refreshItems(productos: ArrayList<Producto>){
+        items.clear()
+        items.addAll(productos)
+        notifyDataSetChanged() //vuelve a repintar la lista de items
+    }
+
     fun addItem(producto: Producto){
         items.add(producto)
         notifyDataSetChanged()
