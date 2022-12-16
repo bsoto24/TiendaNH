@@ -40,4 +40,12 @@ class WebViewActivity : AppCompatActivity() {
         binding.webview.loadUrl("https://developer.android.com")
     }
 
+    override fun onBackPressed() {
+        if (binding.webview.canGoBack()) {
+            binding.webview.goBack()
+        } else {
+            super.onBackPressed()
+        }
+    }
+
 }
