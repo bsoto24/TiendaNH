@@ -2,7 +2,6 @@ package com.sunafil.mitienda.feature.products.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -65,12 +64,6 @@ class ProductosActivity : AppCompatActivity() {
 
         viewModel.loader.observe(this) {
             binding.llLoader.visibility = if (it) View.VISIBLE else View.GONE
-        }
-
-        viewModel.imagenes.observe(this) {
-            it.forEach {
-                Log.e("IMAGENES", it)
-            }
         }
 
         viewModel.obtenerProductos()

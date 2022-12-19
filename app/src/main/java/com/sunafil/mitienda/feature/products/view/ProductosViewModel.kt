@@ -30,9 +30,6 @@ class ProductosViewModel @Inject constructor(
     private val _productos: MutableLiveData<List<Producto>> = MutableLiveData()
     val productos: LiveData<List<Producto>> = _productos
 
-    private val _imagenes: MutableLiveData<List<String>> = MutableLiveData()
-    val imagenes: LiveData<List<String>> = _imagenes
-
     private val _loader: MutableLiveData<Boolean> = MutableLiveData()
     val loader: LiveData<Boolean> = _loader
 
