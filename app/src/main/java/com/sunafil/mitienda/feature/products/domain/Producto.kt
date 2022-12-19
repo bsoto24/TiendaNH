@@ -18,7 +18,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Producto(
     @PrimaryKey(autoGenerate = true) val id: Int,
-    @ColumnInfo(name = "imagen") val imagen: String,
+    @ColumnInfo(name = "imagen") var imagen: String,
     @ColumnInfo(name = "nombre") val nombre: String,
     @ColumnInfo(name = "precio") val precio: String
 ) : Parcelable

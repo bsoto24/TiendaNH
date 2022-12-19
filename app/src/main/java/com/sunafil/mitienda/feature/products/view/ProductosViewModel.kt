@@ -30,6 +30,9 @@ class ProductosViewModel @Inject constructor(
     private val _productos: MutableLiveData<List<Producto>> = MutableLiveData()
     val productos: LiveData<List<Producto>> = _productos
 
+    private val _imagenes: MutableLiveData<List<String>> = MutableLiveData()
+    val imagenes: LiveData<List<String>> = _imagenes
+
     private val _loader: MutableLiveData<Boolean> = MutableLiveData()
     val loader: LiveData<Boolean> = _loader
 
@@ -53,6 +56,21 @@ class ProductosViewModel @Inject constructor(
             delay(2000)
             _productos.value = repository.obtenerProductos()
             _loader.value = false
+        }
+    }
+
+    fun obtenerImagenes() {
+        viewModelScope.launch {
+            val imagenes = repository.obtenerImagenes()
+            val productosUpdate = productos.value ?: listOf()
+            productosUpdate.forEachIndexed { index, producto ->
+                if (imagenes.size >= productosUpdate.size) {
+                    producto.imagen = imagenes[index]
+                } else if (imagenes.isNotEmpty()) {
+                    producto.imagen = imagenes[0]
+                }
+            }
+            _productos.value = productosUpdate
         }
     }
 

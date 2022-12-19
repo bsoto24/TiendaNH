@@ -16,4 +16,6 @@ interface ProductoRepository {
 
     suspend fun guardarProducto(producto: Producto)
 
+    suspend fun obtenerImagenes(): List<String>
+
 }
