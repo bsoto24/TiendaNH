@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
 import com.sunafil.mitienda.databinding.ActivityProductosBinding
 import com.sunafil.mitienda.feature.detail.DetailActivity
 import com.sunafil.mitienda.feature.products.domain.Producto
@@ -24,13 +25,20 @@ class ProductosActivity : AppCompatActivity() {
 
     private val viewModel: ProductosViewModel by viewModels()
     private lateinit var binding: ActivityProductosBinding
+    private lateinit var adapter: ProductosAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProductosBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        initUI()
+        initListeners()
+        initObservers()
+        viewModel.obtenerProductos()
+    }
 
-        val adapter = ProductosAdapter(object : ProductosAdapter.ProductListener {
+    private fun initUI() {
+        adapter = ProductosAdapter(object : ProductosAdapter.ProductListener {
 
             override fun onClick(product: Producto) {
                 val intent = Intent(this@ProductosActivity, DetailActivity::class.java)
@@ -38,26 +46,17 @@ class ProductosActivity : AppCompatActivity() {
                 startActivity(intent)
             }
 
-            override fun onLongClick() {
-                Toast.makeText(
-                    this@ProductosActivity,
-                    "Tienes que darle un click rapido",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-
         })
-
         binding.rvProductos.adapter = adapter //vinculamos el recyclerview con su adapter
+    }
 
+    private fun initListeners() {
         binding.btnAdd.setOnClickListener {
             viewModel.guardarProducto()
         }
+    }
 
-        binding.tvTitulo.setOnClickListener {
-            viewModel.obtenerImagenes()
-        }
-
+    private fun initObservers() {
         viewModel.productos.observe(this) {
             adapter.refreshItems(ArrayList(it))
         }
@@ -66,9 +65,9 @@ class ProductosActivity : AppCompatActivity() {
             binding.llLoader.visibility = if (it) View.VISIBLE else View.GONE
         }
 
-        viewModel.obtenerProductos()
-
+        viewModel.error.observe(this) {
+            Snackbar.make(binding.root, it, Toast.LENGTH_SHORT).show()
+        }
     }
-
 
 }

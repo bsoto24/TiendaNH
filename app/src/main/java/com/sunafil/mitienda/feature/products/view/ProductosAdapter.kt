@@ -60,11 +60,6 @@ class ProductosAdapter(val listener: ProductListener) :
                 listener.onClick(item)
             }
 
-            binding.root.setOnLongClickListener {
-                listener.onLongClick()
-                true
-            }
-
         }
 
     }
@@ -94,8 +89,6 @@ class ProductosAdapter(val listener: ProductListener) :
     interface ProductListener {
 
         fun onClick(product: Producto)
-
-        fun onLongClick()
 
     }
 

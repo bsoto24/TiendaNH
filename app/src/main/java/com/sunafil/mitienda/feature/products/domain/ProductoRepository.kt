@@ -12,10 +12,8 @@ import com.sunafil.mitienda.feature.products.domain.Producto
  */
 interface ProductoRepository {
 
-    suspend fun obtenerProductos():List<Producto>
+    suspend fun obtenerProductos(): Result<List<Producto>>
 
-    suspend fun guardarProducto(producto: Producto)
-
-    suspend fun obtenerImagenes(): List<String>
+    suspend fun guardarProducto()
 
 }

@@ -1,6 +1,7 @@
 package com.sunafil.mitienda.feature.products.data
 
 import com.sunafil.mitienda.data.local.database.ProductoDAO
+import com.sunafil.mitienda.data.local.preferences.SPHelper
 import com.sunafil.mitienda.data.remote.ApiService
 import com.sunafil.mitienda.feature.products.domain.ProductoRepository
 import com.sunafil.mitienda.feature.products.domain.Producto
@@ -16,23 +17,42 @@ import javax.inject.Inject
  */
 class ProductoRepositoryImpl @Inject constructor(
     private val productoDAO: ProductoDAO,
-    private val apiService: ApiService
+    private val apiService: ApiService,
+    private val spHelper: SPHelper
 ) : ProductoRepository {
 
-    override suspend fun obtenerProductos(): List<Producto> {
-        return productoDAO.getAll()
-    }
+    override suspend fun obtenerProductos(): Result<List<Producto>> {
 
-    override suspend fun guardarProducto(producto: Producto) {
-        productoDAO.insert(producto)
-    }
+        val productos = productoDAO.getAll()
 
-    override suspend fun obtenerImagenes(): List<String> {
         val call = apiService.getDogsByBread()
-        if (call.isSuccessful) {
-            return call.body()?.images ?: listOf()
+        val imagenes: List<String> = if (call.isSuccessful) {
+            call.body()?.images ?: listOf()
+        } else {
+            return Result.failure(Throwable("Algo salió mal"))
         }
-        return listOf()
+
+        if (imagenes.isNotEmpty()) {
+            productos.forEachIndexed { index, producto ->
+                if (imagenes.size >= productos.size) {
+                    producto.imagen = imagenes[index]
+                } else {
+                    producto.imagen = imagenes[0]
+                }
+            }
+        } else {
+            return Result.failure(Throwable("Algo salió mal"))
+        }
+
+        return Result.success(productos)
+    }
+
+    override suspend fun guardarProducto() {
+        val counter = spHelper.readInt(SPHelper.PREF_CONTADOR) + 1
+        val producto =
+            Producto(counter, "Imagen $counter", "Producto $counter", "S/$counter.00")
+        productoDAO.insert(producto)
+        spHelper.saveInt(SPHelper.PREF_CONTADOR, counter)
     }
 
 }
