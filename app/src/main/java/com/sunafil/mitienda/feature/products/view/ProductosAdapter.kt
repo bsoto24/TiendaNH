@@ -1,9 +1,10 @@
-package com.sunafil.mitienda
+package com.sunafil.mitienda.feature.products.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.sunafil.mitienda.databinding.ItemProductoBinding
+import com.sunafil.mitienda.feature.products.domain.Producto
 
 
 /**

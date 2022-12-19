@@ -12,7 +12,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:theme="@style/CustomTheme"
-            tools:context=".MainActivity">
+            tools:context=".feature.login.LoginActivity">
 
             <ImageView
                 android:layout_width="120dp"

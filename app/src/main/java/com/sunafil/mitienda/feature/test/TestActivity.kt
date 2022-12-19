@@ -1,4 +1,4 @@
-package com.sunafil.mitienda.test
+package com.sunafil.mitienda.feature.test
 
 import android.os.Bundle
 import android.widget.SeekBar

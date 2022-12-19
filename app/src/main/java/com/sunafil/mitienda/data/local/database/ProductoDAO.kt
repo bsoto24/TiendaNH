@@ -1,9 +1,10 @@
-package com.sunafil.mitienda
+package com.sunafil.mitienda.data.local.database
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.sunafil.mitienda.feature.products.domain.Producto
 
 
 /**
@@ -17,15 +18,15 @@ import androidx.room.Query
 interface ProductoDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(productos: List<Producto>)
+    suspend fun insertAll(productos: List<Producto>)
 
-    @Insert
-    fun insert(producto: Producto)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(producto: Producto)
 
     @Query("DELETE FROM producto")
-    fun removeAll()
+    suspend fun removeAll()
 
     @Query("SELECT * FROM producto")
-    fun getAll(): List<Producto>
+    suspend fun getAll(): List<Producto>
 
 }

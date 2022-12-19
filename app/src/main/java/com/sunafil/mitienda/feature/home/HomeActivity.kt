@@ -1,4 +1,4 @@
-package com.sunafil.mitienda
+package com.sunafil.mitienda.feature.home
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

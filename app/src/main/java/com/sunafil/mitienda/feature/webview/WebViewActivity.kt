@@ -1,4 +1,4 @@
-package com.sunafil.mitienda
+package com.sunafil.mitienda.feature.webview
 
 import android.content.Intent
 import android.net.Uri
