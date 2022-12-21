@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/product_graph"
+    app:startDestination="@id/productListFragment">
+
+    <fragment
+        android:id="@+id/productListFragment"
+        android:name="com.sunafil.mitienda.feature.products.view.list.ProductListFragment"
+        android:label="ProductListFragment"
+        tools:layout="@layout/fragment_product_list">
+
+        <action
+            android:id="@+id/action_productListFragment_to_detailProductFragment"
+            app:destination="@id/detailProductFragment">
+
+            <argument
+                android:name="product"
+                app:argType="com.sunafil.mitienda.feature.products.domain.Producto" />
+
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailProductFragment"
+        android:name="com.sunafil.mitienda.feature.products.view.detail.DetailProductFragment"
+        android:label="DetailProductFragment"
+        tools:layout="@layout/fragment_detail_product">
+
+        <argument
+            android:name="product"
+            app:argType="com.sunafil.mitienda.feature.products.domain.Producto" />
+        <action
+            android:id="@+id/action_detailProductFragment_to_informationDialog"
+            app:destination="@id/informationDialog" />
+        <action
+            android:id="@+id/action_detailProductFragment_to_addCartBottomSheet"
+            app:destination="@id/addCartBottomSheet" />
+
+    </fragment>
+
+    <dialog
+        android:id="@+id/informationDialog"
+        android:name="com.sunafil.mitienda.feature.products.view.dialog.InformationDialogFragment"
+        android:label="InformationDialog"
+        tools:layout="@layout/fragment_information_dialog" />
+
+    <dialog
+        android:id="@+id/addCartBottomSheet"
+        android:name="com.sunafil.mitienda.feature.products.view.bottom.AddCartBottomSheet"
+        android:label="AddCartBottomSheet"
+        tools:layout="@layout/bottom_sheet_add_cart" />
+
+</navigation>

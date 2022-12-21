@@ -16,4 +16,9 @@
         <item name="android:fontFamily">monospace</item>
     </style>
 
+    <style name="Theme.NoActionBar" parent="@style/Theme.MiTienda">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
 </resources>
