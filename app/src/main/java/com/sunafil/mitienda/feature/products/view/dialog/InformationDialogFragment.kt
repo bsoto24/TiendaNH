@@ -25,6 +25,10 @@ class InformationDialogFragment : DialogFragment() {
         binding.btnEntendido.setOnClickListener {
             dismissAllowingStateLoss()
         }
+        arguments?.let {
+            binding.tvTitulo.text = it.getString("title", "")
+            binding.tvDescripcion.text = "Las coordenadas son:\n${it.getDouble("latitude", 0.0)}, ${it.getDouble("longitude", 0.0)}"
+        }
     }
 
 }
