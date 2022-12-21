@@ -8,8 +8,7 @@ import com.sunafil.mitienda.databinding.ActivityHomeBinding
 /**
  * HomeActivity
  *
- * @author Bryam Soto - Interbank
- * @email bsoto@intercorp.com.pe
+ * @author Bryam Soto
  * @since 7/12/22
  */
 class HomeActivity: AppCompatActivity() {

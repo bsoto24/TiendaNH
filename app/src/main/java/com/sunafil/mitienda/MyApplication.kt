@@ -7,8 +7,7 @@ import dagger.hilt.android.HiltAndroidApp
 /**
  * MyApplication
  *
- * @author Bryam Soto - Interbank
- * @email bsoto@intercorp.com.pe
+ * @author Bryam Soto
  * @since 19/12/22
  */
 @HiltAndroidApp

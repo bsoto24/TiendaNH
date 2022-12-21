@@ -3,7 +3,7 @@ package com.sunafil.mitienda.feature.login
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.sunafil.mitienda.databinding.ActivityLoginBinding
-import com.sunafil.mitienda.showTimeDialog
+import com.sunafil.mitienda.utils.showTimeDialog
 
 
 class LoginActivity : AppCompatActivity() {

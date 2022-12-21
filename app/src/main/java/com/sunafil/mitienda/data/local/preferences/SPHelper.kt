@@ -6,8 +6,7 @@ import android.content.SharedPreferences
 /**
  * SPHelper
  *
- * @author Bryam Soto - Interbank
- * @email bsoto@intercorp.com.pe
+ * @author Bryam Soto
  * @since 16/12/22
  */
 class SPHelper(private val sp: SharedPreferences) {

@@ -11,8 +11,7 @@ import javax.inject.Inject
 /**
  * ProductoRepository
  *
- * @author Bryam Soto - Interbank
- * @email bsoto@intercorp.com.pe
+ * @author Bryam Soto
  * @since 19/12/22
  */
 class ProductoRepositoryImpl @Inject constructor(

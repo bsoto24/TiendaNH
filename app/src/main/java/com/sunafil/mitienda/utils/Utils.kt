@@ -1,4 +1,4 @@
-package com.sunafil.mitienda
+package com.sunafil.mitienda.utils
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
@@ -12,8 +12,7 @@ import java.util.*
 /**
  * Utils
  *
- * @author Bryam Soto - Interbank
- * @email bsoto@intercorp.com.pe
+ * @author Bryam Soto
  * @since 14/12/22
  */
 

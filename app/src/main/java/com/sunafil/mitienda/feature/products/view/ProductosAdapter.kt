@@ -12,8 +12,7 @@ import com.sunafil.mitienda.feature.products.domain.Producto
 /**
  * ProductosAdapter
  *
- * @author Bryam Soto - Interbank
- * @email bsoto@intercorp.com.pe
+ * @author Bryam Soto
  * @since 12/12/22
  */
 class ProductosAdapter(val listener: ProductListener) :

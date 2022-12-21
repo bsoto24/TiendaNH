@@ -14,8 +14,7 @@ import javax.inject.Singleton
 /**
  * SharedPreferenceModule
  *
- * @author Bryam Soto - Interbank
- * @email bsoto@intercorp.com.pe
+ * @author Bryam Soto
  * @since 19/12/22
  */
 @Module

@@ -10,8 +10,7 @@ import com.sunafil.mitienda.feature.products.domain.Producto
 /**
  * ProductoDAO
  *
- * @author Bryam Soto - Interbank
- * @email bsoto@intercorp.com.pe
+ * @author Bryam Soto
  * @since 16/12/22
  */
 @Dao

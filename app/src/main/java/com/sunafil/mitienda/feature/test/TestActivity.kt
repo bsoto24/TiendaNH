@@ -12,8 +12,7 @@ import com.sunafil.mitienda.databinding.ActivityTestBinding
 /**
  * TestActivity
  *
- * @author Bryam Soto - Interbank
- * @email bsoto@intercorp.com.pe
+ * @author Bryam Soto
  * @since 14/12/22
  */
 class TestActivity: AppCompatActivity() {

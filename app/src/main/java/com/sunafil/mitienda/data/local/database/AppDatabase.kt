@@ -8,8 +8,7 @@ import com.sunafil.mitienda.feature.products.domain.Producto
 /**
  * AppDatabase
  *
- * @author Bryam Soto - Interbank
- * @email bsoto@intercorp.com.pe
+ * @author Bryam Soto
  * @since 16/12/22
  */
 @Database(entities = [Producto::class], version = 1)

@@ -7,8 +7,7 @@ import retrofit2.http.GET
 /**
  * ImageAPI
  *
- * @author Bryam Soto - Interbank
- * @email bsoto@intercorp.com.pe
+ * @author Bryam Soto
  * @since 19/12/22
  */
 interface ApiService {
