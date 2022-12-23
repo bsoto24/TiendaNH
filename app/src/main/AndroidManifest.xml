@@ -38,6 +38,14 @@
             android:name=".feature.maps.view.MapsActivity"
             android:exported="true"
             android:label="@string/title_activity_maps">
+
+        </activity>
+        <activity
+            android:name=".feature.webview.WebViewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".feature.login.LoginActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -48,12 +56,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name=".feature.webview.WebViewActivity"
-            android:exported="true" />
-        <activity
-            android:name=".feature.login.LoginActivity"
-            android:exported="true" />
         <activity android:name=".feature.home.HomeActivity" />
         <activity
             android:name=".feature.products.view.ProductosActivity"
@@ -63,6 +65,23 @@
         <activity
             android:name=".feature.test.TestActivity"
             android:exported="true" />
+
+        <service
+            android:name=".MyFirebaseMessagingService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_notification" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/teal_700"
+            />
+
     </application>
 
 </manifest>

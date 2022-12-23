@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "909114086892",
+    "firebase_url": "https://antropofit.firebaseio.com",
+    "project_id": "antropofit",
+    "storage_bucket": "antropofit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:909114086892:android:8fdf54456411b03f",
+        "android_client_info": {
+          "package_name": "com.speira.antropofit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "909114086892-2riflh2dit9io5ls8hqmka6fm80ekdca.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.speira.antropofit",
+            "certificate_hash": "264ef2f2ad23d87b74bd278d4f7e257d77794039"
+          }
+        },
+        {
+          "client_id": "909114086892-3l7qdesvsjifq7gllhmi935q5k9kfmmv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmfmoM9dlu5NXgpOyv0kFHbEF5O47AO6Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "909114086892-3l7qdesvsjifq7gllhmi935q5k9kfmmv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:909114086892:android:a6cbdb54342679ee269cc9",
+        "android_client_info": {
+          "package_name": "com.sunafil.mitienda"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "909114086892-3l7qdesvsjifq7gllhmi935q5k9kfmmv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmfmoM9dlu5NXgpOyv0kFHbEF5O47AO6Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "909114086892-3l7qdesvsjifq7gllhmi935q5k9kfmmv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
